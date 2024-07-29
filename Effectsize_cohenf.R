@@ -29,7 +29,7 @@ lmer_w_f2 <- function(vertice) {
     form <- as.formula(paste(m, "~ age + grp + age*grp + (1 | animalID)")) 
     myMod <- lmer(form, data = vertice)
     t <- contrast(emmeans(myMod, ~grp | age), method = "pairwise")
-    ## Both tratio and dferr needs to be modify for each time-point (1:P30, 2:P60, 3:120, 4:150)
+    ## Both tratio and dferr needs to be modify for each time-point (1:P30, 2:P60, 3:P120, 4:P150)
     tratio <- summary(t)$t.ratio[1] 
     dferr <- summary(t)$df[1]
     f2_value <- t_to_f2(t = tratio, df_error = dferr, paired = TRUE)
