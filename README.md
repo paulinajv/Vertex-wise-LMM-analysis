@@ -4,7 +4,13 @@ This repository contains the code used for the diffusion MRI (dMRI) analysis rep
 
 ## Overview
 
-For the analysis, we developed a curvilinear coordinate system called grid_lines, which serves as a common anatomical framework for the cortex across all subjects. The grid_lines system consists of fifty lines that connect the pial surface to the white/gray matter boundary, covering the entire cortical ribbon. Each line is divided into ten equidistant points, which are used to sample the diffusion metrics. In total, we sample 500 vertices per hemisphere.
+For the analysis, we developed a curvilinear coordinate system called grid_lines, which provides a consistent anatomical framework for the cortex across all subjects. The grid_lines system comprises fifty lines that span from the pial surface to the white/gray matter boundary, encompassing the entire cortical ribbon. Each line is subdivided into ten equidistant points, which are used to sample diffusion metrics. Consequently, we obtain a total of 500 sampled vertices per hemisphere. 
+
+The figure below represents the general workflow of this analysis. The upper panel illustrates the dMRI process, from raw images to adjusting the grid_lines, and how we sample our dMRI methods to each vertex. The lower panel outlines the statistical steps we applied using the R code provided in this repository.
+
+_______
+
+![Figura_methods](https://github.com/user-attachments/assets/d3ffb095-e00f-467e-b387-e679e218a391)
 
 ## Analysis Workflow
 
