@@ -128,13 +128,13 @@ for (i in 1:length(streams)) {
   }
 }
 
-## PDF file was saved into your current directory
+# [ PDF file sucessfully saved into your current directory ] #
 
 
 
-## To plot a single predictor effect as a .svg file 
+## To plot a single predictor effect as a .svg file for figure-creation porpuses
 
-## Select the stream/gridline and point you want to plot
+## Select the stream/gridline and point you want to plot 
 filter_data <- data %>% filter(point == "4" & stream == "32")
 
 ## Convert temporal time points into factors
