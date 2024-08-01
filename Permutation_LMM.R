@@ -66,7 +66,7 @@ for (s in 1:length(streams)) {
     # Loop through permutations
     for (nperm in 1:num_permutations) {
       # Shuffle the response variable
-      vertices$MD <- sample(vertices$MD)
+      vertices$FApar <- sample(vertices$FApar) ## Don't forget to add the metric
       # Perform LMM and extract p-values
       lmerTest <- lmerFun(vertices, index)
       # Store the results
@@ -85,10 +85,10 @@ dim3 <- results[, , , 3]
 dim4 <- results[, , , 4]
 
 ## Convert the matrices to dataframes
-MD_5kperm_30 <- as.data.frame(as.table(dim1))
-MD_5kperm_60 <- as.data.frame(as.table(dim2))
-MD_5kperm_120 <- as.data.frame(as.table(dim3))
-MD_5kperm_150 <- as.data.frame(as.table(dim4))
+FApar_5kperm_30 <- as.data.frame(as.table(dim1))
+FApar_5kperm_60 <- as.data.frame(as.table(dim2))
+FApar_5kperm_120 <- as.data.frame(as.table(dim3))
+FApar_5kperm_150 <- as.data.frame(as.table(dim4))
 
 
 
