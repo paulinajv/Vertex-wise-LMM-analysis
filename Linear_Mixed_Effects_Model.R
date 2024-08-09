@@ -31,13 +31,16 @@ library(readr)
 
 
 " Here we first run the LMM without permutation. 
-This is the results we will use as a baseline for the cluster inference"
+Note: This is the results we will use as a baseline for the cluster inference"
+
+## Loading our MRDS data
+mrds <- MRDS_database
 
 ## Converting the temporal time points to factors
 mrds$age <- factor(mrds$age, levels = c("30", "60", "120", "150"))
 
 ## Select the metric to test. 
-metric <- mrds$FApar # using FApar as an example. But it could be either: FApar, FAperp, FAparpar, FAparperp, FA, MD, RD, AD)
+metric <- mrds$FApar # using FApar as an example. But it could be either: FApar, FAperp, FAparpar, FAparperp)
 
 ## Use a function to run the LMM for each vertice and extract the p-values of P30, P60, P120 and P150
 lmerFun <- function(vertices, index) {
