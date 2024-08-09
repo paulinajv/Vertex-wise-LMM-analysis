@@ -12,14 +12,14 @@ library(effects)
 
 
 ## Load the MRDS data
-mrds_data 
+mrds <- MRDS_database
 
 ## convert data time-points into factors
 mrds_data$age <- factor(mrds_data$age, levels = c("30", "60", "120", "150"))
 
 ## Function to calculate the f^2
 
-lmer_w_f2 <- function(vertice) {
+lmer_w_f2 <- function(vertice, index) {
   metrics <- c("FApar", "FAperp", "MDpar", "MDperp") ## add diffusion metrics 
   
   f2_values <- numeric(length(metrics))
@@ -29,9 +29,8 @@ lmer_w_f2 <- function(vertice) {
     form <- as.formula(paste(m, "~ age + grp + age*grp + (1 | animalID)")) 
     myMod <- lmer(form, data = vertice)
     t <- contrast(emmeans(myMod, ~grp | age), method = "pairwise")
-    ## Both tratio and dferr needs to be modify for each time-point (1:P30, 2:P60, 3:P120, 4:P150)
-    tratio <- summary(t)$t.ratio[1] 
-    dferr <- summary(t)$df[1]
+    tratio <- summary(t)$t.ratio[index] 
+    dferr <- summary(t)$df[index]
     f2_value <- t_to_f2(t = tratio, df_error = dferr, paired = TRUE)
     f2_values[i] <- f2_value$Cohens_f2_partial
   }
@@ -52,17 +51,24 @@ for (s in seq_along(streams)) {
   for (p in seq_along(points)) {
     stream <- streams[s]
     point <- points[p]
-    vertice <- subset(mrds_data, stream == streams[s] & point == points[p])
-    f2_test <- lmer_w_f2(vertice)
+    vertice <- subset(mrds, stream == streams[s] & point == points[p])
+    
+    for (i in index) {
+      
+      
+    f2_test <- lmer_w_f2(vertice, i)
     
     result_entry <- list(
       stream = stream,
       point = point,
       metrics = c("FApar", "FAperp", "MDpar", "MDperp"),
-      f2_values = f2_test
+      f2_values = f2_test,
+      index = i
     )
     
-    results_list[[paste0("stream_", stream, "_point_", point)]] <- result_entry
+    results_list[[paste0("stream_", stream, "_point_", point, "index_", i)]] <- result_entry
+ 
+     }
   }
 }
 
