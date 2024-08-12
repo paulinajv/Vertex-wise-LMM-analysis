@@ -21,7 +21,7 @@ library(effects)
 
 
 ## Load the MRDS data
-mrds <- MRDS_database
+mrds <- read_csv("MRDS_database")
 
 ## convert data time-points into factors
 mrds$age <- factor(mrds$age, levels = c("30", "60", "120", "150"))
