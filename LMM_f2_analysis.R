@@ -116,7 +116,7 @@ print(results_list)
 lmer_and_f2_df <- as.data.frame(do.call(rbind, results_list))
 
 ## Unnest the columns containing nested data
-lmer_and_f2_df <- unnest(Cohens_f2_results, cols = 1:6)
+lmer_and_f2_df <- unnest(lmer_and_f2_df, cols = 1:6)
 
 
 
