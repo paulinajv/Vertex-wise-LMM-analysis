@@ -19,7 +19,7 @@ library(readr)
 lmer_and_f2_df ## This is the final output from the LMM_f2_analysis.R 
 
 ## Load my gridlines data
-gridlines <-  read_csv("/Users/paulinav/Downloads/Gridlines_coordinates.txt")
+gridlines <-  read_csv("Gridlines_coordinates.txt")
 
 ## Create a new variable stream and point based from the filename
 gridlines$stream <- substring(gridlines$filename, first = 16, last = 17)
