@@ -16,8 +16,7 @@ _______
 
 The analysis is carried out using a series of R scripts, following these steps:
 
-1) Data Preparation: Tidy the data into the correct format.
-2) Vertex-wise Linear Mixed-Effects Model (LMM) for each vertex.
-3) Effect Size Calculation by Cohen's f for each vertex.
-4) Cluster Inference Analysis.
-5) Data Visualization.
+2) Linear Mixed-Effects Model (LMM) and Effect Size by Cohen's f^2 for each vertex.
+3) Permutation of LMM for each vertex.
+4) Cluster inference analysis.
+5) Data visualization.
