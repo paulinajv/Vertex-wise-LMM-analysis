@@ -11,7 +11,7 @@ BiocManager::install("EBImage")
 ## Load the library
 library(EBImage)
 
-setwd("/Users/paulinav/Documents/ImagingNeuo/data/Perm_results/1kperm/")
+
 #list all files from the current directory
 list.files()
 #crate a list from these files 
