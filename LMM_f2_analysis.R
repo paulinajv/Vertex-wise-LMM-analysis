@@ -79,6 +79,7 @@ points <- unique(mrds$point)
 ## Create an empty list to store the results
 results_list <- list()
 
+index=1:4 #indexing the postnatal days [1=P30, 2=P60, 3=P120, 4=150]
 
 ## Nested loop to iterate between stream/gridlines and points
 for (s in seq_along(streams)) {
